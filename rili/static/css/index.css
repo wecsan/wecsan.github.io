@@ -1,0 +1,804 @@
+/*
+* @Author: Administrator
+* @Date:   2016-07-20 19:42:04
+* @Last Modified by:   tanbei
+* @Last Modified time: 2016-11-11 14:58:24
+*/
+
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@font-face {
+    font-family: 'selfFont';
+    src: url('../fonts/etouch_cg.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    /*overflow: hidden;*/
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: #fcf7f1;
+}
+
+header {
+    width: 100%;
+    height: 0.9rem;
+    line-height: 0.9rem;
+    background-color: #d32f2f;
+}
+
+header div {
+    width: 33.3%;
+    height: 0.9rem;
+    float: left;
+    text-align: center;
+}
+
+header .icons div {
+    width: 1.1rem;
+}
+
+#jintian {
+    background: url(../images/jintian.png) no-repeat 0.1rem center;
+    background-size: 25px;
+    /*margin-left: 0.1rem;*/
+}
+
+#huangli {
+    color: #ffffff;
+    font-size: 0.27rem;
+    display: inline-block;
+    height: 0.25rem;
+    line-height: 0.25rem;
+    vertical-align: top;
+    border: 1px solid #ffffff;
+    padding: 8px 5px 5px 5px;
+    border-radius: 3px;
+    margin-top: 0.2rem;
+    width: 0.7rem;
+    margin-left: 0.2rem;
+    text-align: center;
+}
+
+.returnBack {
+    color: #fff;
+    padding-left: 0.2rem;
+    background: url(../images/returnarrow.png) no-repeat 0.13rem center;
+    background-size: 0.2rem;
+    width: 12%;
+    text-align: center;
+    margin-left: 0.1rem;
+    font-size: 0.30rem;
+}
+
+#festival {
+    background: url(../images/festival.png) no-repeat center center;
+    background-size: 25px;
+    float: right;
+}
+
+header .date {
+    width: 100%;
+    height: 0.9rem;
+    line-height: 0.9rem;
+    font-size: 0.44rem;
+    font-family: 'ºÚÌå';
+    font-weight: 100;
+    color: #fff;
+}
+
+header .tableCal {
+    height: 100%;
+    /*background: url(../images/tablecal.png) no-repeat 83% center;*/
+    /*background-size: 80px;*/
+}
+
+.tableCal1 {
+    height: 100% !important;
+    /*background: url(../images/tablecal1.png) no-repeat 83% center !important;*/
+    /*background-size: 80px !important;*/
+}
+
+.yueli {
+    width: 100%;
+}
+
+.weekName {
+    width: 97%;
+    height: 0.6rem;
+    margin: 0 auto;
+    font-size: 0.28rem;
+    color: #a8a8a8;
+}
+
+.yueli .weekName table {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.weekName table td {
+    vertical-align: middle;
+}
+
+section.calendarbox {
+    width: 330%;
+    font-size: 0.2rem;
+}
+
+.swiper-container {
+    min-height: 280px;
+    overflow: hidden;
+    border-bottom: 1px solid #d9d9d9;
+    padding-left: 1%;
+}
+
+.loading {
+    position: absolute;
+    height: 280px;
+    top: 1.5rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.loading img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 6rem;
+}
+
+section.calendarbox .calendar {
+    width: 33.3%;
+    position: relative;
+    left: 0;
+    top: 0;
+    float: left;
+    font-family: 'ï¿½ï¿½ï¿½ï¿½';
+}
+
+.yueli .leap-month {
+    font-size: 0.6rem;
+}
+
+.huangli .leap-month {
+    font-size: 0.84rem;
+}
+
+.calendar a {
+    display: inline-block;
+    width: 14.13%;
+    height: 1.2rem;
+    text-align: center;
+    font-family: 'ï¿½ï¿½ï¿½ï¿½';
+    text-decoration: none;
+    position: relative;
+}
+
+.calendar a.fiveRow {
+    display: inline-block;
+    width: 10.85%;
+    height: 1.5rem;
+    text-align: center;
+    margin-left: 3%;
+    font-family: 'ï¿½ï¿½ï¿½ï¿½';
+    text-decoration: none;
+}
+
+.dayWrapper .jprestWork {
+    width: 14px;
+    height: 14px;
+    -webkit-background-size: contain !important;
+    -moz-background-size: contain !important;
+    -ms-background-size: contain !important;
+    background-size: contain !important;
+    text-align: right;
+    position: absolute;
+    right: 4%;
+    top: 15%;
+    color: #ffc880;
+}
+
+.dayWrapper .dayContent {
+    font-size: 0.4rem;
+    color: #333333;
+}
+
+.dayWrapper .dayContent .daydate {
+    font-family: selfFont;
+}
+
+.dayWrapper .dayContent .weekend {
+    color: #d32f2f;
+}
+
+.dayWrapper .dayContent .holiday {
+    color: #d32f2f;
+}
+
+.calendar a.before .dayWrapper .dayContent,
+.calendar a.after .dayWrapper .dayContent {
+    color: #cccccc;
+}
+
+.calendar a.before .dayWrapper .dayContent .weekend,
+.calendar a.before .dayWrapper .dayContent .holiday,
+.calendar a.after .dayWrapper .dayContent .weekend,
+.calendar a.after .dayWrapper .dayContent .holiday {
+    color: #cccccc;
+}
+
+.dayWrapper .dayContent .daycndate {
+    font-size: 0.23rem;
+    width: 100%;
+    overflow: hidden;
+    letter-spacing: 1px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.calendar table:nth-child(1) tr {
+    height: 0.3rem;
+    line-height: 0.6rem;
+    color: #a8a8a8;
+}
+
+.calendar table:nth-child(2) tr {
+    /*height: 15%;*/
+}
+
+.calendar table:nth-child(2) tr td {
+    width: 14%;
+    vertical-align: middle;
+    position: relative;
+}
+
+.calendar table:nth-child(2) tr td a {
+    display: inline-block;
+    text-decoration: none;
+    color: #333333;
+}
+
+.calendar table:nth-child(2) tr td a .jprestWork {
+    text-align: right;
+    position: absolute;
+    right: 4%;
+    top: 18%;
+    color: #ffc880;
+}
+
+.calendar table:nth-child(2) tr td a div.number {
+    font-size: 0.4rem;
+    text-align: center;
+    font-family: ï¿½ï¿½ï¿½ï¿½;
+}
+
+.calendar table:nth-child(2) tr td a div.lnumber {
+    height: 0.3rem;
+    font-size: 0.23rem;
+    line-height: 0.3rem;
+    letter-spacing: 1px;
+    font-family: ï¿½ï¿½ï¿½ï¿½;
+    overflow: hidden;
+    text-align: center;
+}
+
+.calendar table:nth-child(2) tr td a div.tdhover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 8%;
+    right: 5%;
+}
+
+.today {
+    background: url(../images/today.png) no-repeat center center !important;
+    -webkit-background-size: 0.9rem !important;
+    -moz-background-size: 0.9rem !important;
+    -ms-background-size: 0.9rem !important;
+    background-size: 0.9rem !important;
+}
+
+.block_click {
+    background: url(../images/chooseday.png) no-repeat center center;
+    -webkit-background-size: 0.9rem;
+    -moz-background-size: 0.9rem;
+    -ms-background-size: 0.9rem;
+    background-size: 0.9rem;
+}
+
+section.huanglibox {
+    width: 95%;
+    margin: 0 auto;
+    /*height: 4.35rem;*/
+    font-size: 0.28rem;
+    background-color: #fcf7f1;
+}
+
+section.huanglibox .daybox {
+    padding-top: 15px;
+    width: 45%;
+    float: left;
+}
+
+.daybox div {
+    /*width: 54%;*/
+    /*float: left;*/
+}
+
+.daybox .day {
+    font-size: 0.73rem;
+    font-family: ï¿½ï¿½ï¿½ï¿½;
+    color: #d32f2f;
+    text-align: center;
+    font-weight: 500;
+    width: 100%;
+}
+
+.daybox .weekbox {
+    font-size: 10px;
+    padding-top: 7px;
+    text-align: center;
+}
+
+.daybox .weekbox p {
+    display: inline;
+    color: #b06d3d;
+    margin-bottom: 0.05rem;
+}
+
+
+/*.daybox .weekbox .week {
+        color: #b06d3d;
+        margin-bottom: 0.05rem;
+    }*/
+
+
+/*.daybox .weekbox .nongliweek {
+        padding: 0 5px;
+        height: 0.45rem;
+        line-height: 0.48rem;
+        color: #fff;
+        background: url(../images/huangliweekbg.png) no-repeat center center;
+        background-size: 100% 77%;
+    }*/
+
+section.huanglibox .info {
+    width: 55%;
+    line-height: 0.57rem;
+    font-size: 0.26rem;
+    float: right;
+    padding-top: 0.3rem;
+}
+
+.yiContent,
+.jiContent {
+    width: 85%;
+    padding-left: 1.1rem;
+    background: url(../images/yi.png) no-repeat 5% center;
+    background-size: 9%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.jiContent {
+    background-image: url(../images/ji.png);
+}
+
+section.huanglibox .info p {
+    /*height: 0.45rem;
+    line-height: 0.45rem;*/
+}
+
+.info p img {
+    display: inline-block;
+    width: 6%;
+    vertical-align: middle;
+    padding: 0 8px;
+}
+
+.huangli .huangliFooter-moji {
+    display: none;
+}
+
+
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
+
+div.huangli {
+    background-color: #fcf7f1;
+    width: 100%;
+    display: none;
+}
+
+
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½*/
+
+.huangliNews {
+    font-size: 0.3rem;
+    color: #595855;
+}
+
+.huangliNews .fengeBg {
+    width: 100%;
+    height: 0.4rem;
+    background: url(../images/news.png) no-repeat center center;
+    background-size: contain;
+    margin-top: 0.3rem;
+}
+
+.huangliNews .newsbox {
+    font-size: 0.33rem;
+}
+
+.newsbox .newsItem {
+    width: 92%;
+    height: 1.4rem;
+    padding: 0.3rem;
+    border-bottom: 1px solid #e2ded8;
+}
+
+.newsbox .newsItem a {
+    color: #595855;
+}
+
+.newsItem .newsContent {
+    width: 65%;
+    float: left;
+}
+
+.newsItem .newsContent .content {
+    padding-top: 0.2rem;
+    line-height: 0.5rem;
+}
+
+.newsItem .newsContent span {
+    font-size: 0.24rem;
+    color: #d32f2f;
+    border: 1px solid #d63c3c;
+}
+
+.newsItem .newsContent span:nth-child(3) {
+    border: 0;
+    color: #cacaca;
+}
+
+.newsItem .newsImg {
+    float: right;
+    width: 30%;
+    height: 100%;
+}
+
+.newsItem .newsImg img {
+    width: 100%;
+    height: 100%;
+}
+
+.huangli .huangliFooter {
+    display: block;
+    width: 100%;
+    height: 1rem;
+    background: url(../images/xiazaiba.png) no-repeat center center;
+    background-size: 100%;
+}
+
+@media (max-width: 500px) {
+    .yiContent,
+    .jiContent {
+        width: 85%;
+        padding-left: 35px;
+    }
+}
+
+@media (min-width: 415px) {
+    header .icons div {
+        width: 100px;
+        height: 42px;
+    }
+    #huangli {
+        font-size: 18px;
+        width: 50px;
+        height: 10px;
+        line-height: 10px;
+        margin-top: 5px;
+    }
+    .returnBack {
+        font-size: 18px;
+        background-size: 10%;
+        padding-left: 0;
+    }
+    #jintian {
+        background: url(../images/jintian.png) no-repeat center center;
+        background-size: 25px;
+    }
+    #festival {
+        background: url(../images/festival.png) no-repeat 30px center;
+        background-size: 25px;
+    }
+    header,
+    header div,
+    header .date,
+    header .icons,
+    header .icons div {
+        height: 42px;
+        line-height: 42px;
+    }
+    header .date {
+        font-size: 25px;
+    }
+    section.huanglibox {
+        height: 130px;
+        font-size: 13px;
+    }
+    section.huanglibox .daybox {
+        height: 69px;
+        padding-top: 5px;
+    }
+    .daybox .day {
+        font-size: 51px;
+        line-height: 66px;
+        margin-right: 30px;
+    }
+    .daybox .weekbox {
+        padding-top: 13px;
+    }
+    .daybox .weekbox .week {
+        margin-bottom: 2px;
+    }
+    .daybox .weekbox .nongliweek {
+        height: 24px;
+        line-height: 26px;
+    }
+    section.huanglibox .info {
+        line-height: 27px;
+        font-size: 14px;
+    }
+    .yiContent,
+    .jiContent {
+        /*padding-left: 85px;*/
+        background: url(../images/yi.png) no-repeat 3% center;
+        -webkit-background-size: 25px;
+        -moz-background-size: 25px;
+        -ms-background-size: 25px;
+        background-size: 25px;
+    }
+    .jiContent {
+        background-image: url(../images/ji.png);
+    }
+    section.huanglibox .info p {
+        height: 25px;
+        line-height: 25px;
+    }
+    .yueli .weekName {
+        margin: 0 auto;
+    }
+    .weekName {
+        width: 97%;
+        height: 40px;
+        margin: 0 auto;
+        font-size: 16px;
+        color: #a8a8a8;
+    }
+    .dayWrapper .dayContent {
+        font-size: 22px;
+    }
+    .dayWrapper .dayContent .daycndate {
+        font-size: 18px;
+        overflow: hidden;
+        letter-spacing: 2px;
+        text-align: center;
+    }
+    .newsItem .newsImg img {
+        width: 250px;
+        height: 140px;
+        float: right;
+    }
+    .today {
+        background: url(../images/today.png) no-repeat center 60% !important;
+        -webkit-background-size: 55px !important;
+        -moz-background-size: 55px !important;
+        -ms-background-size: 55px !important;
+        background-size: 55px !important;
+    }
+    .block_click {
+        background: url(../images/chooseday.png) no-repeat center 60%;
+        -webkit-background-size: 55px;
+        -moz-background-size: 55px;
+        -ms-background-size: 55px;
+        background-size: 55px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 415px) {
+    .dayWrapper .jprestWork {
+        right: 0%;
+    }
+}
+
+@media (min-width: 415px) and (max-width: 680px) {
+    header .icons div {
+        width: 60px;
+    }
+    section.calendarbox {
+        height: 355px !important;
+    }
+    .dayWrapper .dayContent {
+        font-size: 18px;
+    }
+    .dayWrapper .dayContent .daycndate {
+        font-size: 16px;
+        overflow: hidden;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+    .today {
+        background: url(../images/today.png) no-repeat center center !important;
+        -webkit-background-size: 0.7rem !important;
+        -moz-background-size: 0.7rem !important;
+        -ms-background-size: 0.7rem !important;
+        background-size: 0.7rem !important;
+    }
+    .block_click {
+        background: url(../images/chooseday.png) no-repeat center center;
+        -webkit-background-size: 0.7rem;
+        -moz-background-size: 0.7rem;
+        -ms-background-size: 0.7rem;
+        background-size: 0.7rem;
+    }
+    .newsItem .newsImg img {
+        width: 100%;
+        height: 100%;
+        float: right;
+    }
+}
+
+.huangliFooter-moji {}
+
+.huangliFooter-moji ul {
+    padding-top: 5px;
+    margin: 0 15px;
+}
+
+.huangliFooter-moji ul li {
+    width: 20%;
+    text-align: center;
+    float: left;
+    padding-right: 6.66%;
+    padding-top: 10px;
+}
+
+.huangliFooter-moji ul li:first-child {}
+
+.huangliFooter-moji ul li:last-child {
+    padding-right: 0;
+}
+
+.huangliFooter-moji ul li img {
+    width: 60%;
+}
+
+.huangliFooter-moji ul li span {
+    color: #d32f2f;
+    font-size: 12px;
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 70px
+}
+
+.huangliFooter-moji-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(239, 228, 214, 0.9);
+    height: 1rem;
+    line-height: 1rem;
+}
+
+.huangliFooter-moji-banner img {
+    display: inline-block;
+}
+
+.huangliFooter-moji-banner-logo {
+    width: 0.7rem;
+    padding-top: 0.15rem;
+    padding-left: 15px;
+}
+
+.huangliFooter-moji-banner-desc {
+    display: inline-block;
+    /* width: 3.4rem; */
+    font-size: 0.28rem;
+    padding-top: 0.05rem;
+    vertical-align: top;
+    margin-left: -0.15rem;
+}
+
+.huangliFooter-moji-banner-download {
+    width: 1.5rem;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    text-align: center;
+    margin-top: 0.23rem;
+    margin-right: 15px;
+    vertical-align: top;
+    float: right;
+    font-size: 0.23rem;
+    border-radius: 0.1rem 0.1rem;
+    background-color: #b42323;
+    color: #fff;
+    text-decoration: none;
+}
+
+.huanglibox-desc {}
+
+.huanglibox-desc ul {
+    width: 100%;
+}
+
+.huanglibox-desc ul li {
+    padding-top: 10px;
+    width: 22%;
+    float: left;
+    padding-right: 4%;
+}
+
+.huanglibox-desc ul li:last-child {
+    padding-right: 0;
+}
+
+.huanglibox-desc ul li img {
+    width: 100%;
+}
+
+.huanglibox-download img {
+    padding-top: 20px;
+    width: 100%;
+}
+
+.huanglibox-banner {}
+
+.huanglibox-banner img {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.huanglibox-banner .logo {
+    width: 0.45rem;
+    padding-top: 0.15rem;
+}
+
+.huanglibox-banner .desc {
+    width: 2rem;
+    padding-top: 0.26rem;
+}
+
+.huanglibox-banner .desc1 {
+    float: right;
+    width: 1.4rem;
+    padding-top: 0.26rem;
+}

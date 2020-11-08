@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta name="keywords" content="万年历查询,农历查询,农历查询,老黄历查询,天气预报查询,周公解梦查询" />
+    <meta name="description" content="日历官网提供万年历查询,天气预报查询,包括农历日子查询,农历转阳历,日历查询。支持安卓苹果手机客户端下载,查日历,找日期,看天气预报" />
+    <title>万年历,农历在线查询|日历官网</title>
+
+    <link rel="stylesheet" href="static/css/swiper-3.3.1.min.css">
+    <link rel="stylesheet" href="static/css/reset.css">
+    <link rel="stylesheet" id="css" href="static/css/index.css">
+    <link rel="stylesheet" href="static/css/huangli.min.css">
+    <style>
+        i#lDom~div,
+        i#lDom~span,
+        i#lDom~iframe {
+            display: none !important;
+            opacity: 0 !important;
+        }
+    </style>
+    <script>
+        //墨迹需求
+        var _isMoji = window.location.href.indexOf("moji") > -1;
+        if (_isMoji) {
+            document.title = "万年历";
+        }
+        //车来了需求
+        var _isChelaile = window.location.href.indexOf("chelaile") > -1;
+        if (_isChelaile) {
+            var style = document.createElement("style");
+            style.innerHTML = 'body .chelaile-hidden{display:none;} ' +
+                'body .chelaile-title{background-color:#3498db;}' +
+                'body .container{background-color: #fff;}' +
+                'body section.huanglibox{background-color: #fff;}' +
+                'body .daybox .weekbox p{color:#000 !important}' +
+                'body .dayWrapper .dayContent .weekend,body .dayWrapper .dayContent .holiday,body .daybox .day{color:#FF5722 !important;}';
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(style, s);
+        }
+
+        var deviceWidth = document.documentElement.clientWidth;
+        if (deviceWidth > 750) {
+            document.documentElement.style.fontSize = 750 / 7.5 + "px";
+        } else {
+            document.documentElement.style.fontSize = deviceWidth / 7.5 + "px";
+        }
+
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?c560355020185ad4e55a6086e7069fb1";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+
+       
+    </script>
+</head>
+
+<body>
+    <!--貌似无用代码，暂时注释掉
+    <div id="shadow" css="shadow" style="position:absolute;z-index:1000;width:100%;height:100%;background-color:#000; -moz-opacity: 0.3; opacity:.30; filter: alpha(opacity=30);display: none;"></div>
+    <div id="download" style="position:absolute;z-index:1001;width: 80%;left: 10%;top: 32%;background-color: #fcf7f1;border-radius: 5px;padding: 10% 0;letter-spacing: 0.8px;display: none;">
+        <p style="font-size: 16px;text-align: center;">更多黄历资讯，尽在<span style="color: #ff8800;font-weight: 600;">中华万年历</span></p>
+        <p style="font-size: 16px;text-align: center;margin-top: 8px;">赶快下载看看吧</p>
+        <img src="static/picture/download_false.png" onclick="$('#download').hide();$('#shadow').hide();" style="float: left;margin-top:9%;margin-left: 6%;margin-right: 3%;width: 41%;">
+        <img src="static/picture/download_true.png" onclick="$('#download').hide();$('#shadow').hide();"style="float: left;margin-top:9%;margin-left: 3%;margin-right: 6%;width: 41%;">
+    </div>-->
+    <div class="container">
+        <!-- 首页头部部分 -->
+        <header class="chelaile-title">
+            <div class="icons">
+                <div id="huangli"><span>黄历</span></div>
+                <div class="returnBack" style="display:none;">月历</div>
+            </div>
+            <div class="dateTable">
+                <div class="date" style="display: inline-block;"></div>
+
+            </div>
+            <div class="tableCal">
+                <div id="jintian" style="display:none;"></div>
+                
+            </div>
+        </header>
+        <!-- 月历部分 -->
+        <div class="yueli">
+            <div class="weekName">
+                <table>
+                    <tr>
+                        <td>日</td>
+                        <td>一</td>
+                        <td>二</td>
+                        <td>三</td>
+                        <td>四</td>
+                        <td>五</td>
+                        <td>六</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="swiper-container" id="calendar">
+                <section class="calendarbox swiper-wrapper">
+                    <div class="calendar swiper-slide" id="calendar-container"></div>
+                </section>
+            </div>
+            <div class="loading" id="loading">
+                <img src="static/picture/loading_default.gif" alt="">
+            </div>
+            <section class="huanglibox">
+                <div class="daybox">
+                    <div class="day">六月十八
+                    </div>
+                    <div class="weekbox">
+                        <p class="week">丙申猴年 星期一</p>
+                        <p class="nongliweek">辛卯月 乙未日</p>
+                    </div>
+                </div>
+                <div class="info">
+                    <p class="yiContent">更新中...</p>
+                    <p class="jiContent">更新中...</p>
+                </div>
+                <div class="clearfix"></div>
+                <div class="huanglibox-desc chelaile-hidden">
+                    <ul>
+                        <li class=" downLoad ">
+                            <a href="javascript:;" class="click_download" data-deeplink="zhwnl://tools/selectdate">
+                                <img src="static/picture/h1.png" alt="">
+                            </a>
+                        </li>
+                        <li class=" downLoad ">
+                            <a href="javascript:;" class="click_download" data-deeplink="zhwnl://tools/fortunetelling">
+                                <img src="static/picture/h2.png" alt="">
+                            </a>
+                        </li>
+                        <li class=" downLoad ">
+                            <a href="javascript:;" class="click_download" data-deeplink="zhwnl://almanac">
+                                <img src="static/picture/h3.png" alt="">
+                            </a>
+                        </li>
+                        <li class=" downLoad">
+                            <a href="javascript:;" class="click_download" data-deeplink="zhwnl://tools/dream">
+                                <img src="static/picture/h4.png" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="huanglibox-download downLoad chelaile-hidden">
+                    <a href="javascript:;" class="click_download" data-deeplink="zhwnl://calendar">
+                        <img src="static/picture/btn-download.png" alt="">
+                    </a>
+                </div>
+                <div class="huanglibox-banner">
+                    <img class="logo" src="static/picture/newlogo.png" alt="" style="width: 0.4rem">
+                    <img class="desc" src="static/picture/banner-desc.png" alt="">
+                    <img class="desc1" src="static/picture/banner-desc1.png" alt="">
+                </div>
+            </section>
+        </div>
+        <!-- 黄历部分 -->
+        <div class="huangli">
+            <!-- 黄历 -->
+            <div class="rootcontent">
+                <div class="dayViewContent">
+                    <div class="dayViewNumberContent">
+                        <div class="preveDay">
+                            <a class="preveDayLink" href="javascript:preDayHuangli()"></a>
+                        </div>
+                        <div class="cnDayViewContent">
+                            <div class="liteCnDayInfo">
+                                <span class="dayViewCnDate">一一一一</span>
+                            </div>
+                            <div class="dayViewYearInfo">
+                                <span class="dayViewCnYear">丙申 [猴] 年 癸巳月 癸卯日</span>
+                            </div>
+                        </div>
+                        <div class="nextDay">
+                            <a class="nextDayLink" href="javascript:nextDayHuangli()"></a>
+                        </div>
+                    </div>
+                    <!--宜和忌区域-->
+                    <div class="border-top"></div>
+                    <div class="hlContent">
+                        <div class="yjDayViewContent">
+                            <div class="yiDayViewContent">
+                                <div class="dayViewYiImgContent" style="height: auto;">
+                                    <div class="tableCellWrapper">
+                                        <div class="dayViewYiImg"></div>
+                                    </div>
+                                </div>
+                                <div class="dayViewYiDesc">
+                                    <div class="tableCellWrapper">
+                                        <div class="dayViewYiDescContent"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="jiDayViewContent">
+                                <div class="dayViewJiImgContent" style="height: auto;">
+                                    <div class="tableCellWrapper">
+                                        <div class="dayViewJiImg"></div>
+                                    </div>
+                                </div>
+                                <div class="dayViewJiDesc">
+                                    <div class="tableCellWrapper">
+                                        <div class="dayViewJiDescContent"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 诸神方位 -->
+                        <div class="zhushenfangwei">
+                            <div class="zhushenfangweititle">诸神方位</div>
+                            <div class="zhushenfangweidesc">财神-正南 喜神-东南 福神-正西 生门-西北</div>
+                        </div>
+                        <!-- 胎神、星宿、冲煞、五行、彭祖百忌 -->
+                        <div class="hldesc clearfix">
+                            <div class="tsxxcswx">
+                                <div class="tscontent">
+                                    <div class="hlListTitle">胎神</div>
+                                    <div class="hlListTxt tsTxt">
+                                        <span>房床内房内南</span>
+                                    </div>
+                                </div>
+                                <div class="xxcontent">
+                                    <div class="hlListTitle">星宿</div>
+                                    <div class="hlListTxt xxTxt">
+                                        <span>北方女土蝠-凶</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pzcontent">
+                                <div class="hlListTitle">彭祖</div>
+                                <div class="hlListTxt pzTxt">
+                                    <span>癸不词讼</span><br> <span>理弱敌强</span><br> <br> <span>卯不穿井</span><br>
+                                    <span>水泉不香</span><br>
+                                </div>
+                            </div>
+                            <div class="tsxxcswx">
+                                <div class="cscontent">
+                                    <div class="hlListTitle">冲煞</div>
+                                    <div class="hlListTxt csTxt">
+                                        <span>冲鸡(丁)煞西</span>
+                                    </div>
+                                </div>
+                                <div class="wxcontent">
+                                    <div class="hlListTitle">五行</div>
+                                    <div class="hlListTxt wxTxt">
+                                        <span>金铂金 开执位</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="scyjContent clearfix">
+                            <div class="scyjTitle">时辰吉凶</div>
+                            <div class="scyjList clearfix">
+                                <div class="scyjItem">
+                                    <div class="scyjTtx">壬子吉</div>
+                                </div>
+                                <div class="scyjItem">
+                                    <div class="scyjTtx">癸丑凶</div>
+                                </div>
+                                <div class="scyjItem">
+                                    <div class="scyjTtx">甲寅吉</div>
+                                </div>
+                                <div class="scyjItem">
+                                    <div class="scyjTtx">乙卯吉</div>
+                                </div>
+                                <div class="scyjItem">
+                                    <div class="scyjTtx">丙辰凶</div>
+                                </div>
+                                <div class="scyjItem">
+                                    <div class="scyjTtx">丁巳凶</div>
+                                </div>
+                                <div class="scyjItem">
+                                    <div class="scyjTtx">戊午吉</div>
+                                </div>
+                                <div class="scyjItem">
+                                    <div class="scyjTtx">己未凶</div>
+                                </div>
+                                <div class="scyjItem">
+                                    <div class="scyjTtx">庚申凶</div>
+                                </div>
+                                <div class="scyjItem">
+                                    <div class="scyjTtx">辛酉吉</div>
+                                </div>
+                                <div class="scyjItem">
+                                    <div class="scyjTtx">壬戌凶</div>
+                                </div>
+                                <div class="scyjItem">
+                                    <div class="scyjTtx">癸亥凶</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-bottom"></div>
+                </div>
+            </div>
+            <!-- 黄历咨询部分 -->
+            <div class="huangliNews">
+                <div class="fengeBg"></div>
+                <div class="newsbox">
+                </div>
+            </div>
+            <a href="http://zhiyunzz.simplesite.com" class="huangliFooter click_download" data-deeplink="zhwnl://calendar"></a>
+            <div class="huangliFooter-moji">
+                <ul>
+                    <li class=" downLoad ">
+                        <a href="javascript:;" class="click_download" data-deeplink="zhwnl://tools/selectdate">
+                            <img src="static/picture/b1.png" alt="">
+                            <span>吉日查询</span>
+                        </a>
+                    </li>
+                    <li class=" downLoad ">
+                        <a href="javascript:;" class="click_download" data-deeplink="zhwnl://tools/fortunetelling">
+                            <img src="static/picture/b2.png" alt="">
+                            <span>大仙灵签</span>
+                        </a>
+                    </li>
+                    <li class=" downLoad ">
+                        <a href="javascript:;" class="click_download" data-deeplink="zhwnl://astro/luck">
+                            <img src="static/picture/b3.png" alt="">
+                            <span>星座运势</span>
+                        </a>
+                    </li>
+                    <li class=" downLoad ">
+                        <a href="javascript:;" class="click_download" data-deeplink="zhwnl://tools/dream">
+                            <img src="static/picture/b4.png" alt="">
+                            <span>周公解梦</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <section class="huangliFooter-moji-banner">
+                <img class="huangliFooter-moji-banner-logo" src="static/picture/newlogo.png" alt="">
+                <span class="huangliFooter-moji-banner-desc">在线万年历—老字号、好口碑！</span>
+                <a href="http://www.89g.top/rili/" class="huangliFooter-moji-banner-download downLoad click_download" data-deeplink="calendar">立即体验</a>
+            </section>
+        </div>
+    </div>
+    <i id="lDom"></i>
+    <!-- <script src="static/js/vconsole.min.js"></script> -->
+    <script src="static/js/zepto.min.js"></script>
+    <script src="static/js/swiper-3.3.1.jquery.min.js"></script>
+    <script src="static/js/suishen.wnl.min.js"></script>
+    <script src="static/js/suishen.huangli.min.js"></script>
+    <script src="static/js/linkedme.min.js"></script>
+    <script src="static/js/suishen.zhwnl.deeplink.wnl.js"></script>
+    <!--<script src="static/js/suishen.zhwnl.download.js"></script>-->
+    <script src="static/js/makecal.js"></script>
+    <script src="static/js/index.js"></script>
+    <script type="text/javascript" src="static/js/tshare.js"></script>
+    <script>
+        tShare.init({
+            title: "",
+            desc: "",
+            url: window.location.href,
+            shareUrl: window.location.href.substring(0, window.location.href.lastIndexOf("/")) + '/image/favcion.png',
+            wxAppId: "",
+            wxSignatureUrl: "zhiyunzz.simplesite.com" + encodeURIComponent(window.location.href),
+            wxDebug: false
+        });
+    </script>
+    <script>
+        //怀疑华为自带浏览器js文件不刷新，使用这段代码隐藏掉loading，重构时可删掉此段代码
+        hideLoading();
+
+        function hideLoading() {
+            var calendar = document.getElementById('calendar-container');
+            if (calendar.style.height == '') {
+                var loading = document.getElementById('loading');
+                loading.style.display = 'none';
+                return;
+            }
+            setTimeout(function() {
+                hideLoading();
+            }, 50);
+        }
+    </script>
+   
+</body>
+
+</html>
