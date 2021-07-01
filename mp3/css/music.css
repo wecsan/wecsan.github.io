@@ -1,0 +1,343 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+body
+{
+    background: url("../images/bg.jpg") no-repeat center center;
+}
+/* 阿里矢量图库*/
+/* ----start----*/
+@font-face
+{
+    font-family: 'iconfont';
+    src: url('iconfont.eot');
+    src: url('iconfont.eot?#iefix') format('embedded-opentype'), url('iconfont.woff2') format('woff2'), url('iconfont.woff') format('woff'), url('iconfont.ttf') format('truetype'), url('iconfont.svg#iconfont') format('svg');
+}
+.iconfont
+{
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+/* ----end-----*/
+/* start music*/
+#Music
+{
+    width: 900px;
+    height: 600px;
+    background: #464646;
+    margin: 60px 25%;
+    box-shadow: 0px 0px 25px #fff;
+    background: transparent;
+    border-radius: 5px;
+}
+/* 左边*/
+#Music .MusicL
+{
+    float: left;
+    width: 599px;
+    height: 519px;
+    background: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    border-radius: 5px 0px 0px 0px;
+    border-right: 1px #ffffff80 solid;
+    border-bottom: 1px #ffffff80 solid;
+}
+/* 显示歌词*/
+#Music .MusicL .lyric
+{
+    width: 100%;
+    margin: 20px auto;
+    text-align: center;
+    color: #64b9e1;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    font-family: "华文楷体";
+}
+/* 右边*/
+#Music .MusicR
+{
+    float: right;
+    width: 300px;
+    height: 519px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 0px 5px 0px 0px;
+    border-bottom: 1px #ffffff80 solid;
+}
+/* 歌曲封面和名称*/
+#Music .MusicR > ul
+{
+    list-style: none;
+    width: 120px;
+    height: 180px;
+    margin: 20px auto;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+}
+/* 歌曲封面*/
+#Music .MusicR ul li img
+{
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px #fff;
+}
+/* 歌曲名称*/
+#Music .MusicR > ul li:nth-child(2)
+{
+    font-size: 16px;
+    border-bottom: 2px solid #fff;
+}
+#Music .MusicR > p
+{
+    color: #fff;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+/* 歌曲列表*/
+#Music .MusicR .songList
+{
+    height: 300px;
+    width: 100%;
+    overflow-y: auto;
+}
+/* 歌曲列表滚动条*/
+.songList::-webkit-scrollbar
+{
+    width: 5px;
+}
+.songList::-webkit-scrollbar-track
+{
+    background: #f6f6f6;
+    border-radius: 2px;
+}
+.songList::-webkit-scrollbar-thumb
+{
+    background: #aaa;
+    border-radius: 2px;
+}
+.songList::-webkit-scrollbar-thumb:hover
+{
+    background: #747474;
+}
+.songList::-webkit-scrollbar-corner
+{
+    background: #f6f6f6;
+}
+/* 歌曲列表美化*/
+#Music .MusicR .songList ul
+{
+    list-style: none;
+    text-align: center;
+    line-height: 20px;
+    font-size: 15px;
+    color: #fff;
+}
+#Music .MusicR .songList ul li
+{
+    margin: 10px auto;
+    padding: 5px 0;
+    border-bottom: #64b9e1 1px solid;
+    border-top: #64b9e1 1px solid;
+    border-radius: 10px;
+    width: 200px;
+}
+#Music .MusicR .songList ul li:hover
+{
+    color: skyblue;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px lightgreen;
+}
+/* 控制条*/
+#Music .footer
+{
+    float: left;
+    width: 100%;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 0px 0px 5px 5px;
+}
+#Music .footer #playStyle
+{
+    position: relative;
+    left: 3%;
+    top: -10%;
+    width: 65px;
+    height: 20px;
+    padding: 4px;
+    border: 1px solid #64b9e1;
+    background: #64b9e150;
+    border-radius: 5px;
+    color: #fff;
+}
+#Music .footer .progress
+{
+    width: 900px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.5);
+}
+#Music .footer .progress:hover
+{
+    cursor: pointer;
+}
+#Music .footer .progress .bg
+{
+    width: 0px;
+    height: 3px;
+    box-shadow: 0 0px 5px lightgreen;
+    background-color: #64b9e1;
+}
+#Music .footer .progress .bar
+{
+    width: 10px;
+    height: 10px;
+    background-color: #f6f6f6;
+    border-radius: 50%;
+    transform: translate(0, -7px);
+}
+#Music .footer .progress .bar:hover
+{
+    background-color: #def3f8;
+}
+#Music .footer .btn
+{
+    position: relative;
+    top: 20%;
+    left: 10%;
+    width: 100%;
+}
+#Music .footer .btn i
+{
+    position: relative;
+    left: 130px;
+    top: 10px;
+    color: #fff;
+    font-size: 30px;
+    margin: 0px 10px;
+}
+#Music .footer .btn i:hover
+{
+    color: lightgreen;
+    cursor: pointer;
+}
+#Music .footer .btn ul
+{
+    list-style: none;
+}
+#Music .footer .btn .volume
+{
+    position: absolute;
+    left: 45%;
+    top: 70%;
+}
+#Music .footer .btn .volume_wall
+{
+    width: 180px;
+    height: 15px;
+    border-radius: 10px;
+    background: #9acfea;
+    margin: auto;
+    cursor: pointer;
+    position: absolute;
+    bottom: 50%;
+    left: 35%;
+}
+#Music .footer .btn .volume_wall .volume_bar
+{
+    width: 15px;
+    height: 15px;
+    background: lime;
+    box-shadow: 0 0 10px #000;
+    border-radius: 50%;
+    cursor: pointer;
+    transform: translate(0, 0);
+}
+#Music .footer .btn .volume_wall #volume_num
+{
+    color: yellow;
+    font-size: 16px;
+    position: absolute;
+    left: 185px;
+    top: -2px;
+    z-index: 100;
+}
+#Music .footer .btn .replay
+{
+    position: absolute;
+    left: 35%;
+    top: 70%;
+}
+#Music .footer .btn .playStyle
+{
+    position: absolute;
+    left: 40%;
+    top: 70%;
+}
+#Music .footer .btn .icon_lyric
+{
+    position: absolute;
+    left: 50%;
+    top: 55%;
+}
+#Music .footer .btn .lyric_alert
+{
+    text-align: center;
+    width: 200px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    color: #000;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    display: none;
+}
+#Music .footer .info
+{
+    color: #fff;
+    position: relative;
+    left: 660px;
+    bottom: 55px;
+    width: 220px;
+}
+/* end music*/
+/* 通用参数start*/
+.sizeC
+{
+    font-size: 30px;
+}
+.color1
+{
+    color: lightgreen;
+}
+.color2
+{
+    color: lightpink;
+}
+.color3
+{
+    color: yellow;
+}
+.songNameColor
+{
+    color: lightgreen;
+}
+.roateImg
+{
+    animation: roate 10s linear infinite;
+}
+@keyframes roate
+{
+    from
+    {
+        transform: rotate(0deg) }
+    to
+    {
+        transform: rotate(360deg) }
+}
+/* 通用参数end*/
