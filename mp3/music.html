@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>music</title>
+    <link rel="stylesheet" href="css/music.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/music.js"></script>
+</head>
+<body>
+<!-- start music -->
+<div id="Music">
+    <!-- 左边 -->
+    <div class="MusicL">
+        <!-- 歌词显示 -->
+        <div class="lyric">
+        </div>
+    </div>
+    <!-- 右边 -->
+    <div class="MusicR">
+        <!-- 歌曲封面、歌曲名称 -->
+        <ul>
+            <li><img id="songFace" src="" width="120"></li>
+            <li><span id="songName"></span></li>
+        </ul>
+        <p>列表共有<span id="maxSongNum" style="color: #ffbc00">0</span>首音乐</p>
+        <!-- 歌曲列表 -->
+        <div class="songList">
+            <ul id="songList"></ul>
+        </div>
+    </div>
+    <!-- 控制器  -->
+    <div class="footer">
+        <!-- 时间进度条 -->
+        <section class="progress" id="progress">
+            <div class="bg" id="progress_bg"></div>
+            <div class="bar" id="progress_bar"></div>
+        </section>
+        <div class="btn">
+            <!-- 上一首、播放/暂停、下一首 -->
+            <i class="iconfont icon-shangyishoushangyige" onclick="preSong()"></i>
+            <i class="iconfont icon-bofang" id="play" onclick="playAndStop()"></i>
+            <i class="iconfont icon-xiayigexiayishou" onclick="nextSong()"></i>
+            <ul>
+                <!--重新播放-->
+                <li>
+                    <i class="iconfont icon-zhongxinshiyang replay" onclick="replay();"></i>
+                </li>
+                <!-- 播放样式 -->
+                <li>
+                    <i class="iconfont icon-liebiaoshunxu playStyle" onclick="playStyleClick()"></i>
+                </li>
+                <!-- 音量控制 -->
+                <li>
+                    <i class="iconfont icon-icon_huabanfuben volume" id="volume" onclick="ableOrEnableVolume()"></i>
+                    <div class="volume_wall" id="volume_wall">
+                        <span id="volume_num"></span>
+                        <div class="volume_bar"></div>
+                    </div>
+                </li>
+                <!--词控制 -->
+                <li>
+                    <!-- 词颜色显示 -->
+                    <div class="lyric_alert">
+                        <p>目 前： <span id="nowLyricColor"></span></p>
+                        <p>下一首: <span id="nextLyricColor"></span></p>
+                    </div>
+                    <i class="icon_lyric" onclick="changeLyricColor()">词</i>
+                </li>
+            </ul>
+        </div>
+        <!-- 播放风格信息 -->
+        <div id="playStyle">顺序播放</div>
+        <!-- 当前播放信息 -->
+        <div class="info">
+            <p>当前: &nbsp;<span id="info_SongName"></span></p>
+            <p>歌手: &nbsp;<span id="info_Autor"></span></p>
+            <p>时间: &nbsp;<span id="info_Time"></span></p>
+        </div>
+    </div>
+</div>
+<audio src="" id="myMusic"></audio>
+<script>
+    $(function () {
+        initMusic();//初始化
+    });
+</script>
+<!-- end music -->
+</body>
+</html>
